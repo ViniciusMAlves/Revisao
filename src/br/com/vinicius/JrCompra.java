@@ -26,7 +26,7 @@ public class JrCompra extends javax.swing.JFrame {
           jCBPessoa.addItem(SCliente.getInstance().getCliente().get(i).getNome());
         }
         for (int i = 0; i < SCompra.getInstance().getCompras().size(); i++) {
-            jCBProduto.addItem(SProduto.getInstance().getProdutos().get(i).getNome());
+            jCBProduto.addItem(SProduto.getInstance().produtoAtivos().get(i).getNome());
         }
     }
 
