@@ -13,21 +13,20 @@ import java.util.GregorianCalendar;
  *
  * @author vinicius.132217
  */
-public  class  Pessoa {
-    private String nome,rg,cpf;
-    private int id,idade;
+public class Pessoa {
+
+    private String nome, rg, cpf;
+    private int id, idade;
     private Date datanascimento;
 
     public Pessoa(String nome, String rg, String cpf, Date datanascimento) {
-        
+
         this.nome = nome;
         this.rg = rg;
         this.cpf = cpf;
         this.datanascimento = datanascimento;
         this.idade = Idade(datanascimento);
     }
-    
-    
 
     public String getNome() {
         return nome;
@@ -76,24 +75,18 @@ public  class  Pessoa {
     public void setDatanascimento(Date datanascimento) {
         this.datanascimento = datanascimento;
     }
-    
+
     public static int Idade(java.util.Date datanascimento) {
 
         Calendar dateOfBirth = new GregorianCalendar();
 
         dateOfBirth.setTime(datanascimento);
 
-        
-
         Calendar today = Calendar.getInstance();
-
-        
 
         int anos = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
 
         dateOfBirth.add(Calendar.YEAR, anos);
-
-        
 
         if (today.before(dateOfBirth)) {
 
@@ -110,15 +103,4 @@ public  class  Pessoa {
         return "Pessoa{" + "nome=" + nome + "\n rg=" + rg + "\n cpf=" + cpf + "\n id=" + id + "\n idade=" + idade + "\n datanascimento=" + datanascimento + '}';
     }
 
-    
-
-    
-
-    
-
-    
-    
-    
-   
-    
 }

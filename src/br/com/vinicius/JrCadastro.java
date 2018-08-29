@@ -199,22 +199,22 @@ public class JrCadastro extends javax.swing.JFrame {
 
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
         jLblMostrarId.setText(String.valueOf(SCliente.getInstance().getCliente().size()));
-        
+
         Date dataNascimenti = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         int id = Integer.parseInt(jLblMostrarId.getText());
         String nome = jTFNome.getText();
-        String rg= jTFRg.getText();
+        String rg = jTFRg.getText();
         String cpf = jTFCpf.getText();
-        try{
-            dataNascimenti=sdf.parse(jTFIdade.getText());
-        }catch(ParseException pe){
+        try {
+            dataNascimenti = sdf.parse(jTFIdade.getText());
+        } catch (ParseException pe) {
             JOptionPane.showMessageDialog(this, pe);
         }
-        SCliente.getInstance().getCliente().add(new Pessoa( nome, rg, cpf, dataNascimenti));
-        SCliente.getInstance().getCliente().get(SCliente.getInstance().getCliente().size()-1).setId(id);
-        JOptionPane.showMessageDialog(this, SCliente.getInstance().getCliente().get(SCliente.getInstance().getCliente().size()-1));
-            
+        SCliente.getInstance().getCliente().add(new Pessoa(nome, rg, cpf, dataNascimenti));
+        SCliente.getInstance().getCliente().get(SCliente.getInstance().getCliente().size() - 1).setId(id);
+        JOptionPane.showMessageDialog(this, SCliente.getInstance().getCliente().get(SCliente.getInstance().getCliente().size() - 1));
+
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     private void jBtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMenuActionPerformed

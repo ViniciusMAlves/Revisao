@@ -14,51 +14,50 @@ import java.util.List;
  * @author vinicius.132217
  */
 public class SProduto {
-    
+
     private List<Produto> produtos = new ArrayList<>();
 
     public List<Produto> getProdutos() {
         return produtos;
     }
-    
-    
-    
+
     private SProduto() {
     }
-    
+
     public static SProduto getInstance() {
         return SProdutoHolder.INSTANCE;
     }
-    
+
     private static class SProdutoHolder {
 
         private static final SProduto INSTANCE = new SProduto();
     }
-    
+
     public Produto ultimoproduto() {
-        return this.getProdutos().get(this.getProdutos().size()-1);
+        return this.getProdutos().get(this.getProdutos().size() - 1);
     }
-    
+
     public List<Produto> produtoAtivos() {
-        for (int i = 0; i < this.getProdutos().size(); i++) {
-            
-            if (this.getProdutos().get(i).getStatus() == 'A') {
-              produtoAtivos().add(this.getProdutos().get(i));
+
+        List<Produto> pr = new ArrayList<>();
+        for (Produto produto : produtos) {
+            if (produto.getStatus() == 'A') {
+                pr.add(produto);
             }
         }
-        
-        
-        return null;
+
+        return pr;
     }
-    
+
     public List<Produto> produtoInativo() {
-        for (int i = 0; i < this.getProdutos().size(); i++) {
-            if (this.getProdutos().get(i).getStatus() == 'I') {
-                produtoInativo().add(this.getProdutos().get(i));
+
+        List<Produto> pr = new ArrayList<>();
+        for (Produto produto : produtos) {
+            if (produto.getStatus() == 'I') {
+                pr.add(produto);
             }
-  
         }
-        
-        return null;
+
+        return pr;
     }
 }

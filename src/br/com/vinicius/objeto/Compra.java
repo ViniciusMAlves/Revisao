@@ -14,19 +14,11 @@ import java.util.List;
  * @author vinicius.132217
  */
 public class Compra {
+
     private int id;
     private Pessoa comprador;
-    private List<Produto> produtos;
+    private List<Produto> produtos = new ArrayList<>();
     private float totalValo;
-
-    public Compra(Pessoa comprador) {
-        this.comprador = comprador;
-        this.produtos = new ArrayList<>();
-    }
-    
-    
-    
-    
 
     public int getId() {
         return id;
@@ -60,35 +52,21 @@ public class Compra {
         this.totalValo = totalValo;
     }
 
-    
-    
-    
-
-    
-    
-    
-    public void AlteraStatus(Produto produto){
+    public void AlteraStatus(Produto produto) {
         SProduto.getInstance().getProdutos().get(produto.getId()).setStatus('I');
-            
-        
-        
-        
-    }
-    public void incrementaTotaldaCompra(Produto produto){
-       
-       
-       this.totalValo += produto.getValor();
-        
-                
-    }
-        
-        
-    
-    public void alterarProdutoCompra(Produto produto){
-      produtos.add(produto);
-      AlteraStatus(produto);
-      incrementaTotaldaCompra(produto);
+
     }
 
-    
+    public void incrementaTotaldaCompra(Produto produto) {
+
+        this.totalValo += produto.getValor();
+
+    }
+
+    public void alterarProdutoCompra(Produto produto) {
+        produtos.add(produto);
+        AlteraStatus(produto);
+        incrementaTotaldaCompra(produto);
+    }
+
 }

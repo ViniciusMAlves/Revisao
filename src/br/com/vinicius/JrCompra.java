@@ -15,17 +15,19 @@ import br.com.vinicius.objeto.Pessoa;
  * @author vinicius.132217
  */
 public class JrCompra extends javax.swing.JFrame {
-    Pessoa a ;
+
+    Pessoa a;
 
     /**
      * Creates new form Compra
      */
     public JrCompra() {
         initComponents();
+        jLblMostrarId.setText(String.valueOf(SCompra.getInstance().getCompras().size()));
         for (int i = 0; i < SCliente.getInstance().getCliente().size(); i++) {
-          jCBPessoa.addItem(SCliente.getInstance().getCliente().get(i).getNome());
+            jCBPessoa.addItem(SCliente.getInstance().getCliente().get(i).getNome());
         }
-        for (int i = 0; i < SCompra.getInstance().getCompras().size(); i++) {
+        for (int i = 0; i < SProduto.getInstance().produtoAtivos().size(); i++) {
             jCBProduto.addItem(SProduto.getInstance().produtoAtivos().get(i).getNome());
         }
     }
@@ -39,6 +41,7 @@ public class JrCompra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jCBPessoa = new javax.swing.JComboBox<>();
         jLblTitulo = new javax.swing.JLabel();
@@ -47,6 +50,10 @@ public class JrCompra extends javax.swing.JFrame {
         jCBProduto = new javax.swing.JComboBox<>();
         jLblMostrarId = new javax.swing.JLabel();
         jLblId = new javax.swing.JLabel();
+        jBtnSalvar = new javax.swing.JButton();
+        jBtnMenu = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +88,22 @@ public class JrCompra extends javax.swing.JFrame {
         jLblId.setForeground(new java.awt.Color(255, 255, 255));
         jLblId.setText("ID :");
 
+        jBtnSalvar.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jBtnSalvar.setText("Salva");
+        jBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSalvarActionPerformed(evt);
+            }
+        });
+
+        jBtnMenu.setFont(new java.awt.Font("Times New Roman", 0, 11)); // NOI18N
+        jBtnMenu.setText("Menu");
+        jBtnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,21 +115,30 @@ public class JrCompra extends javax.swing.JFrame {
                         .addComponent(jLblTitulo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLblProduto))
+                        .addComponent(jLblProduto)))
+                .addContainerGap(144, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jCBProduto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCBPessoa, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLblNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(144, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(176, 176, 176)
-                    .addComponent(jLblId)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLblMostrarId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(176, Short.MAX_VALUE)))
+                            .addComponent(jLblNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLblId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLblMostrarId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(jBtnSalvar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jBtnMenu)
+                                .addGap(0, 339, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,21 +146,21 @@ public class JrCompra extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLblTitulo)
                 .addGap(7, 7, 7)
-                .addComponent(jLblNome)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLblNome)
+                    .addComponent(jLblMostrarId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCBPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jLblProduto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCBProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(154, 154, 154)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLblMostrarId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLblId))
-                    .addContainerGap(154, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnSalvar)
+                    .addComponent(jBtnMenu))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,6 +180,16 @@ public class JrCompra extends javax.swing.JFrame {
     private void jCBPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBPessoaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBPessoaActionPerformed
+
+    private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
+        
+    }//GEN-LAST:event_jBtnSalvarActionPerformed
+
+    private void jBtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMenuActionPerformed
+        JrMenu me = new JrMenu();
+        me.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jBtnMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +228,9 @@ public class JrCompra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnMenu;
+    private javax.swing.JButton jBtnSalvar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jCBPessoa;
     private javax.swing.JComboBox<String> jCBProduto;
     private javax.swing.JLabel jLblId;

@@ -6,6 +6,7 @@
 package br.com.vinicius;
 
 import Singleton.SProduto;
+import br.com.vinicius.objeto.Compra;
 import br.com.vinicius.objeto.Produto;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -215,6 +216,8 @@ public class JrProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTFValorActionPerformed
 
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
+       jLblMostrarId.setText(String.valueOf(SProduto.getInstance().getProdutos().size()));
+        
         Date DataFabri = null, DAtaVali = null;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         int id = Integer.parseInt(jLblMostrarId.getText());
@@ -229,15 +232,19 @@ public class JrProduto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, pe);
         }
 
-        SProduto.getInstance().getProdutos().add(new Produto( nome, desricao, vlor, DAtaVali, DataFabri));
+        SProduto.getInstance().getProdutos().add(new Produto(nome, desricao, vlor, DAtaVali, DataFabri));
         SProduto.getInstance().getProdutos().get(SProduto.getInstance().getProdutos().size() - 1).setId(id);
         JOptionPane.showMessageDialog(this, SProduto.getInstance().getProdutos().get(SProduto.getInstance().getProdutos().size() - 1));
+
+
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     private void jBtnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnMenuActionPerformed
         JrMenu me = new JrMenu();
         me.setVisible(true);
         this.dispose();
+
+
     }//GEN-LAST:event_jBtnMenuActionPerformed
 
     /**

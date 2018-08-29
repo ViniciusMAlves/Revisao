@@ -14,21 +14,20 @@ import java.util.List;
  * @author vinicius.132217
  */
 public class SCompra {
+
     private List<Compra> compras = new ArrayList<>();
 
     public List<Compra> getCompras() {
         return compras;
     }
-    
-    
-    
+
     private SCompra() {
     }
-    
+
     public static SCompra getInstance() {
         return CompraHolder.INSTANCE;
     }
-    
+
     private static class CompraHolder {
 
         private static final SCompra INSTANCE = new SCompra();

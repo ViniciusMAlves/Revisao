@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author vinicius.132217
  */
 public class SCliente {
-    
-     private  List<Pessoa> clientes = new ArrayList<>();
+
+    private List<Pessoa> clientes = new ArrayList<>();
 
     public List<Pessoa> getCliente() {
         return clientes;
@@ -25,23 +25,15 @@ public class SCliente {
     public String toString() {
         return "Cliente{" + "cliente=" + clientes + '}';
     }
-     
-     
 
-    
-    
     private SCliente() {
-          
-        
+
     }
-    
-    
-    
-    
+
     public static SCliente getInstance() {
         return SClienteHolder.INSTANCE;
     }
-    
+
     private static class SClienteHolder {
 
         private static final SCliente INSTANCE = new SCliente();

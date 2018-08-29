@@ -101,9 +101,9 @@ public class JrMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnProdutoActionPerformed
 
     private void jBtnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCompraActionPerformed
-       JrCompra co = new JrCompra();
-       co.setVisible(true);
-       this.dispose();
+        JrCompra co = new JrCompra();
+        co.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jBtnCompraActionPerformed
 
     /**
